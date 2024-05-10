@@ -10,9 +10,11 @@ class HomeView extends StatelessWidget {
     Widget tab;
     return SafeArea(
       child: CupertinoPageScaffold(
+        backgroundColor: CupertinoColors.white,
         child: CupertinoTabScaffold(
+          backgroundColor: CupertinoColors.white,
           tabBar: CupertinoTabBar(
-            backgroundColor: const Color.fromARGB(255, 146, 17, 17),
+            backgroundColor: Color.fromARGB(255, 83, 4, 4),
             activeColor: CupertinoColors.white,
             inactiveColor: const Color.fromARGB(255, 176, 176, 176),
             items: const [
