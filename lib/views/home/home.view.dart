@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
         child: CupertinoTabScaffold(
           backgroundColor: CupertinoColors.white,
           tabBar: CupertinoTabBar(
-            backgroundColor: Color.fromARGB(255, 83, 4, 4),
+            backgroundColor: const Color.fromARGB(255, 83, 4, 4),
             activeColor: CupertinoColors.white,
             inactiveColor: const Color.fromARGB(255, 176, 176, 176),
             items: const [
