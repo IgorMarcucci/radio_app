@@ -10,11 +10,9 @@ class HttpService implements IHttpService{
   @override
   Future<List<T>> getAll<T>(
       {required String endpoint,
-      required T Function(Map<String, dynamic> json) fromJson,
-      required String token}) async {
-    Map<String, String> headers = {'Authorization': 'Bearer $token'};
+      required T Function(Map<String, dynamic> json) fromJson}) async {
     final response =
-        await http.get(Uri.parse("$_baseUrl/$endpoint"), headers: headers);
+        await http.get(Uri.parse("$_baseUrl/$endpoint"));
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       return (data as List).map((item) => fromJson(item)).toList();
@@ -26,11 +24,9 @@ class HttpService implements IHttpService{
   @override
   Future<T> get<T>(
       {required String endpoint,
-      required T Function(Map<String, dynamic> json) fromJson,
-      required String token}) async {
-    Map<String, String> headers = {'Authorization': 'Bearer $token'};
+      required T Function(Map<String, dynamic> json) fromJson}) async {
     final response =
-        await http.get(Uri.parse("$_baseUrl/$endpoint"), headers: headers);
+        await http.get(Uri.parse("$_baseUrl/$endpoint"));
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       return fromJson(data);
@@ -42,11 +38,9 @@ class HttpService implements IHttpService{
   @override
   Future<http.Response> post(
       {required String endpoint,
-      required Map<String, dynamic> body,
-      required String token}) async {
+      required Map<String, dynamic> body}) async {
     Map<String, String> headers = {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer $token'
+      'Content-Type': 'application/json'
     };
     final response = await http.post(Uri.parse("$_baseUrl/$endpoint"),
         body: json.encode(body), headers: headers);
@@ -56,11 +50,9 @@ class HttpService implements IHttpService{
   @override
   Future<http.Response> put(
       {required String endpoint,
-      required Map<String, dynamic> body,
-      required String token}) async {
+      required Map<String, dynamic> body}) async {
     Map<String, String> headers = {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer $token'
+      'Content-Type': 'application/json'
     };
     final response = await http.put(Uri.parse("$_baseUrl/$endpoint"),
         body: json.encode(body), headers: headers);
@@ -69,10 +61,9 @@ class HttpService implements IHttpService{
 
   @override
   Future<http.Response> delete(
-      {required String endpoint, required String token}) async {
+      {required String endpoint}) async {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer $token'
     };
     final response =
         await http.delete(Uri.parse("$_baseUrl/$endpoint"), headers: headers);
