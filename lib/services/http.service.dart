@@ -15,7 +15,7 @@ class HttpService implements IHttpService{
         await http.get(Uri.parse("$_baseUrl/$endpoint"));
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      return (data as List).map((item) => fromJson(item)).toList();
+      return (data['users'] as List).map((item) => fromJson(item)).toList();
     } else {
       throw Exception("Failed to fetch $endpoint");
     }
